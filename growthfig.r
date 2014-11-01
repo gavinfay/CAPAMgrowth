@@ -39,9 +39,9 @@ recap.lengths <-
   mulenage[recap.ages+1]*rlnorm(num.recaps,meanlog=-0.5*cvlenage^2,
                                             sdlog=cvlenage)
 
-recap.lengths <- 
-  release.lengths+(release.lengths-linf)*(exp(-1*vbk*(recap.ages-release.ages
-    ))-1)*rlnorm(num.recaps,meanlog=-0.5*cvlenage^2,sdlog=cvlenage)
+#recap.lengths <- 
+#  release.lengths+(release.lengths-linf)*(exp(-1*vbk*(recap.ages-release.ages
+#    ))-1)*rlnorm(num.recaps,meanlog=-0.5*cvlenage^2,sdlog=cvlenage)
 
 for (i in 1:num.recaps)
 {
