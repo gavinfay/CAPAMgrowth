@@ -28,7 +28,7 @@ plot(mulenage~ages,type='l',lwd=3,ylim=c(0,linf*1.5))
 polygon(c(ages,rev(ages)),c(lolenage,rev(hilenage)),col=gray(0.8),border=NA)
 lines(mulenage~ages,lwd=3)
 
-num.recaps <- 60
+num.recaps <- 50
 release.age <- 5
 recap.ages <- sample((release.age+1):maxage,num.recaps,replace=TRUE,
                      prob=numbers[(release.age+2):(maxage+1)])
@@ -74,7 +74,7 @@ for (i in 1:num.recaps)
 
 
 len50 <- 50
-len95 <- 65
+len95 <- 60
 
 selex.release <- 1./(1+exp(-1*log(19)*(release.lengths-len50)/(len95-len50)))
 selex.recap <- 1./(1+exp(-1*log(19)*(recap.lengths-len50)/(len95-len50)))
@@ -133,8 +133,11 @@ par(mfrow=c(1,1),oma=c(0,0,0,0),mar=c(4,4,2,2))
 plot(mulenage~ages,type='l',lwd=3,ylim=c(0,linf*1.5),xlab="Age",ylab="Length",
      cex.lab=1.2)
 box(lwd=3)
-polygon(c(ages,rev(ages)),c(lolenage,rev(hilenage)),col=gray(0.8),border=NA)
+#polygon(c(ages,rev(ages)),c(lolenage,rev(hilenage)),col=gray(0.8),border=NA)
 lines(mulenage~ages,lwd=3)
+lines(lolenage~ages,lwd=3,lty=3)
+lines(hilenage~ages,lwd=3,lty=3)
+
 for (i in 1:num.recaps)
 {
   #points(release.ages[i],release.lengths[i],col=gray(0.4),pch=1)
@@ -162,11 +165,11 @@ plot.lens <- len50-1*log((1/selex)-1)*(len95-len50)/log(19)
 
 for (i in 1:length(selex))
  {
-  text(0,plot.lens[i],selex[i],cex=1.2)
+  text(0,plot.lens[i],selex[i],cex=0.8)
   lines(c(0.5,1.25),rep(plot.lens[i],2),lwd=1)
  }
 plot.lens <- len50-1*log((1/0.99)-1)*(len95-len50)/log(19)
-text(0,plot.lens,"Sel",cex=1.2)
+text(0,plot.lens,"Sel",cex=0.8)
 
 dlnorm(50,meanlog=mulenage[6]+0.5*cvlenage^2,sdlog=cvlenage)
 qlnorm(50/mulenage[6],meanlog=0.5*cvlenage^2,sdlog=cvlenage)
